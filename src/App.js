@@ -29,10 +29,6 @@ function App() {
   const onSubmitSearch = (evt) => {
     evt.preventDefault();
 
-    onClickSearch();
-  };
-
-  const onClickSearch = () => {
     if (search || search.length > 0) {
       setSearchedWord(search);
     } else {
@@ -45,20 +41,19 @@ function App() {
         },      
       });    
     }
-    setSearch('');
-  }
+    setSearch('');  
+  };
 
   return (
     <div>
       <h1>Find a Recipe</h1>
-      <div className="inputContainer">
-        <form onSubmit={onSubmitSearch}>
-          <input type="text" onChange={searchWord} placeholder="Search..." value={search} />
-        </form>
-        <button onClick={onClickSearch}>
-          <img src="https://www.iconpacks.net/icons/2/free-search-icon-2911-thumb.png" width="20px" alt="search icon"/>
-        </button>
-      </div>
+      <form  className="inputContainer" onSubmit={onSubmitSearch}>
+        <input type="text" onChange={searchWord} placeholder="Search..." value={search} />
+        <button type="submit">
+        <img src="https://www.iconpacks.net/icons/2/free-search-icon-2911-thumb.png" width="20px" alt="search icon"/>
+      </button>
+      </form>
+        
       {recipes.slice(0, 10).map((item, index) => (
           <RecipeComponent
           key={index}
